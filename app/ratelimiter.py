@@ -5,6 +5,7 @@ from functools import wraps
 from app import app
 from flask_login import login_required, current_user
 
+#Rate Limiter Using redis
 r = redis.Redis(decode_responses=True)
 
 print(r.connection_pool)

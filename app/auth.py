@@ -12,23 +12,23 @@ def signup():
 
 @auth.route('/signup', methods=['POST'])
 def signup_post():
-    # email = request.form.get('email')
     username = request.form.get('username')
     password = request.form.get('password')
-    # print(username,password)
     if(len(username)<=4 or len(password)<=4):
         flash('Username and Password should be of more than 4. Try Again!')
         flash('Try Again')
         return redirect(url_for('auth.signup'))
 
 
-    user = User.query.filter_by(username=username).first() # if this returns a user, then the username already exists in database
+    user = User.query.filter_by(username=username).first() 
+    # if this returns a user, then the username already exists in database
 
-    if user: # if a user is found, we want to redirect back to signup page so user can try again
+    # if a user is found, redirecting back to signup page
+    if user: 
         flash('Username already exists')
         return redirect(url_for('auth.signup'))
 
-    # create new user with the form data. Hash the password so plaintext version isn't saved.
+    #  Hashing the password 
     new_user = User(username=username, password=generate_password_hash(password, method='sha256'))
 
     # add the new user to the database
@@ -48,7 +48,6 @@ def login():
 def login_post():
     username = request.form.get('username')
     password = request.form.get('password')
-    # remember = True if request.form.get('remember') else False
 
     user = User.query.filter_by(username=username).first()
 
@@ -59,12 +58,11 @@ def login_post():
         return redirect(url_for('auth.login')) # if user doesn't exist or password is wrong, reload the page
 
     # if the above check passes, then we know the user has the right credentials
-    # print(remember)
     login_user(user, remember=True)
     return redirect(url_for('main.index'))
 
 @auth.route('/logout')
 @login_required
 def logout():
-    logout_user()
+    logout_user() 
     return redirect(url_for('main.index'))

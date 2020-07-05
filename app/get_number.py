@@ -2,7 +2,7 @@ from fastapi import APIRouter, Request
 from flask_login import login_required, current_user
 import random, requests
 
-
+#FastApi routes - [API-A]
 router = APIRouter()
 
 @router.get("/get_number")
