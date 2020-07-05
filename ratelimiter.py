@@ -2,7 +2,7 @@ import redis
 import traceback
 from flask import abort, request
 from functools import wraps
-from total_app import app
+from app import app
 from flask_login import login_required, current_user
 
 r = redis.Redis(decode_responses=True)

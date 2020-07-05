@@ -2,7 +2,7 @@ from flask import Blueprint, render_template, redirect, url_for, request, flash
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_user, logout_user, login_required
 from models import User
-from total_app import db
+from app import db
 
 auth = Blueprint('auth', __name__)
 
@@ -35,7 +35,9 @@ def signup_post():
     db.session.add(new_user)
     db.session.commit()
 
-    return redirect(url_for('auth.login'))
+    flash('Succesfully Signed Up. Way to Go !!')
+    login_user(new_user, remember=True)
+    return redirect(url_for('main.index'))
 
 
 @auth.route('/login')
