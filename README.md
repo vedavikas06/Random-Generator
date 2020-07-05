@@ -19,7 +19,7 @@ $ docker-compose up
 ```
 # Description
 
-Created API A (Random number generator Service) using Fastapi
-Remaining endpoints were built using Flask
-For Rate-limiting, in-memory database (Redis) is Used 
-Authentication using SQLAlchemy, flask-login 
+* Created API A (Random number generator Service) using Fastapi
+* Remaining endpoints were built using Flask
+* For Rate-limiting, in-memory database (Redis) is Used 
+* Authentication using SQLAlchemy, flask-login 
