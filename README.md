@@ -11,7 +11,7 @@
 
 ### Docker Commands to make app run
 
-To be executed in Random-Generator folder
+First fork the repo, and execute the below commands using docker in Random-Generator folder
 
 ```sh
 $ docker build -t randomapi .
