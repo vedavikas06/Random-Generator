@@ -1,0 +1,10 @@
+version: "3"
+services:
+    my_api_service:
+        image: randomapi
+        ports:
+            - "8000:8000"
+        depends_on:
+            - my_redis_service
+    my_redis_service:
+        image: redis

@@ -19,6 +19,7 @@ def index():
 @login_required
 @rate_limiter(limit=5, minutes=1) 
 def call_api():
+    # print(request.host)
     response = requests.get(url= "http://" + request.host + "/get_number")
     json_data = json.loads(response.text)
     return render_template('random.html', number=json_data["Random_Number"])

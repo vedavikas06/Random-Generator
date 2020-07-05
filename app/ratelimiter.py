@@ -6,7 +6,7 @@ from app import app
 from flask_login import login_required, current_user
 
 #Rate Limiter Using redis
-r = redis.Redis(decode_responses=True)
+r = redis.Redis(host='my_redis_service', port=6379, decode_responses=True)
 
 print(r.connection_pool)
 
