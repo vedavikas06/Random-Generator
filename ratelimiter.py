@@ -60,15 +60,16 @@ def increment_counter(type=None, minutes=1):
 
     key = get_counter_key(type=type)
     try:
+        r.set(key,0,ex=60,nx=True)
         r.incr(key)
-        r.expire(key, time=60 * minutes)
+        # r.expire(key, time=60 * minutes)
     except:
         app.logger.error(traceback.format_exc())
         pass
 
 def get_count(type=None):
     key = get_counter_key(type=type)
-    # print(key)
+    
     try:
         return int(r.get(key) or 0)
     except:
